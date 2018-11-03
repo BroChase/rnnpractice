@@ -2,20 +2,15 @@
 # CSCI Deep Learning Program 4
 # RNN
 
-import csv
 import itertools
-import operator
 import numpy as np
 import nltk
-import sys
-from datetime import datetime
-import matplotlib.pyplot as plt
+import rnn
 import os
 
-vocabulary_size = 8000
-unknown_token = "UNKNOWN"
-sentence_start_token = "SENTENCE_START"
-sentence_end_token = "SENTENCE_END"
+unknown_token = chr(300)
+sentence_start_token = chr(299)
+sentence_end_token = chr(301)
 
 # break up txt documents into sentences and concatenate them
 sentences = []
@@ -30,13 +25,177 @@ for file in os.listdir('stories'):
 
         sentences = sentences + s
 
-
+# create the vocab ACSII 0-256
 characters = list(map(chr, range(0, 256)))
+characters.append(sentence_start_token)
+characters.append(sentence_end_token)
+characters.append(unknown_token)
 
 # Tokenize the sentences into words
 toke_sent = []
 for i in range(len(sentences)):
-    L = list(sentences[i][0])
-    toke_sent = toke_sent + L
+    toke_sent.append(list(sentences[i][0]))
+
+# Sequences of length 50
+toke_n = []
+for i in range(len(toke_sent)):
+    if len(toke_sent[i]) == 50:
+        toke_n.append(toke_sent[i])
+
+char_freq = nltk.FreqDist(itertools.chain(*toke_sent))
+print(char_freq)
+
+vocab = char_freq.most_common(len(characters))
+index_to_char = [x[0] for x in characters]
+char_to_index = dict([(w, i) for i, w in enumerate(index_to_char)])
+
+print("Using vocabulary size %d." % len(index_to_char))
+print("The least frequent word in our vocabulary is '%s' and appeared %d times." % (vocab[-1][0], vocab[-1][1]))
+print(char_freq.most_common(10))
+
+for i, sent in enumerate(toke_sent):
+    toke_sent[i] = [w if w in char_to_index else unknown_token for w in sent]
+
+# Create the training data
+XTrain = np.asarray([[char_to_index[w] for w in sent[:-1]] for sent in toke_n])
+yTrain = np.asarray([[char_to_index[w] for w in sent[1:]] for sent in toke_n])
+# Print an training data example
+x_example, y_example = XTrain[42], yTrain[42]
+print("x:\n%s\n%s" % (" ".join([index_to_char[x] for x in x_example]), x_example))
+print("\ny:\n%s\n%s" % (" ".join([index_to_char[x] for x in y_example]), y_example))
+
+np.random.seed(10)
+# ========================rnn vanilla 100 epochs==============================
+model = rnn.RNNVanilla(len(index_to_char))
+# Limit to 1000 examples to save time
+print("Expected Loss for random predictions: %f" % np.log(len(index_to_char)))
+print("Actual loss: %f" % model.calculate_loss(XTrain[:1000], yTrain[:1000]))
+
+
+# Train on a small subset of the data to see what happens
+losses, strings = rnn.train_with_sgd(model, XTrain, yTrain, index_to_char, learning_rate=0.005,
+                            nepoch=101, evaluate_loss_after=1)
+for i in range(len(strings)):
+    print("index_to_word>")
+    print('%s' % " ".join([index_to_char[x] for x in strings[i]]))
+
+loss = []
+epoch = []
+for i in range(len(losses)):
+    loss.append(losses[i][1])
+    epoch.append(i)
+# Plot the epoch.loss
+rnn.lossvsepoch(epoch, loss, 'Half Sequence')
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# ========================rnn vanilla 50 epochs==============================
+model = rnn.RNNVanilla(len(index_to_char), hidden_dim=50)
+losses2, strings2 = rnn.train_with_sgd(model, XTrain, yTrain, index_to_char, learning_rate=0.005,
+                            nepoch=101, evaluate_loss_after=1)
+for i in range(len(strings2)):
+    print("index_to_word>")
+    print('%s' % " ".join([index_to_char[x] for x in strings2[i]]))
+
+loss = []
+epoch = []
+for i in range(len(losses2)):
+    loss.append(losses2[i][1])
+    epoch.append(i)
+rnn.lossvsepoch(epoch, loss, 'Half Hidden')
+
+# ========================rnn vanilla 200 epochs==============================
+model = rnn.RNNVanilla(len(index_to_char), hidden_dim=200)
+losses3, strings3 = rnn.train_with_sgd(model, XTrain, yTrain, index_to_char, learning_rate=0.005,
+                            nepoch=101, evaluate_loss_after=1)
+for i in range(len(strings3)):
+    print("index_to_word>")
+    print('%s' % " ".join([index_to_char[x] for x in strings3[i]]))
+
+loss = []
+epoch = []
+for i in range(len(losses3)):
+    loss.append(losses3[i][1])
+    epoch.append(i)
+
+rnn.lossvsepoch(epoch, loss, 'Double Hidden')
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+toke_n = []
+for i in range(len(toke_sent)):
+    if len(toke_sent[i]) == 25:
+        toke_n.append(toke_sent[i])
+
+char_freq = nltk.FreqDist(itertools.chain(*toke_sent))
+print(char_freq)
+
+vocab = char_freq.most_common(len(characters))
+index_to_char = [x[0] for x in characters]
+char_to_index = dict([(w, i) for i, w in enumerate(index_to_char)])
+
+print("Using vocabulary size %d." % len(index_to_char))
+print("The least frequent word in our vocabulary is '%s' and appeared %d times." % (vocab[-1][0], vocab[-1][1]))
+print(char_freq.most_common(10))
+
+for i, sent in enumerate(toke_sent):
+    toke_sent[i] = [w if w in char_to_index else unknown_token for w in sent]
+
+# Create the training data
+XTrain = np.asarray([[char_to_index[w] for w in sent[:-1]] for sent in toke_n])
+yTrain = np.asarray([[char_to_index[w] for w in sent[1:]] for sent in toke_n])
+# ========================rnn vanilla 100 epochs Sequence len(25)==============================
+model = rnn.RNNVanilla(len(index_to_char))
+# Train on a small subset of the data to see what happens
+losses4, strings4 = rnn.train_with_sgd(model, XTrain, yTrain, index_to_char, learning_rate=0.005,
+                            nepoch=101, evaluate_loss_after=1)
+for i in range(len(strings4)):
+    print("index_to_word>")
+    print('%s' % " ".join([index_to_char[x] for x in strings4[i]]))
+
+loss = []
+epoch = []
+for i in range(len(losses4)):
+    loss.append(losses4[i][1])
+    epoch.append(i)
+# Plot the epoch.loss
+rnn.lossvsepoch(epoch, loss, 'Half Sequence')
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+toke_n = []
+for i in range(len(toke_sent)):
+    if len(toke_sent[i]) == 100:
+        toke_n.append(toke_sent[i])
+
+char_freq = nltk.FreqDist(itertools.chain(*toke_sent))
+print(char_freq)
+
+vocab = char_freq.most_common(len(characters))
+index_to_char = [x[0] for x in characters]
+char_to_index = dict([(w, i) for i, w in enumerate(index_to_char)])
+
+print("Using vocabulary size %d." % len(index_to_char))
+print("The least frequent word in our vocabulary is '%s' and appeared %d times." % (vocab[-1][0], vocab[-1][1]))
+print(char_freq.most_common(10))
+
+for i, sent in enumerate(toke_sent):
+    toke_sent[i] = [w if w in char_to_index else unknown_token for w in sent]
+
+# Create the training data
+XTrain = np.asarray([[char_to_index[w] for w in sent[:-1]] for sent in toke_n])
+yTrain = np.asarray([[char_to_index[w] for w in sent[1:]] for sent in toke_n])
+# ========================rnn vanilla 100 epochs Sequence len(100)==============================
+model = rnn.RNNVanilla(len(index_to_char))
+# Train on a small subset of the data to see what happens
+losses5, strings5 = rnn.train_with_sgd(model, XTrain, yTrain, index_to_char, learning_rate=0.005,
+                            nepoch=101, evaluate_loss_after=1)
+for i in range(len(strings5)):
+    print("index_to_word>")
+    print('%s' % " ".join([index_to_char[x] for x in strings5[i]]))
+
+loss = []
+epoch = []
+for i in range(len(losses5)):
+    loss.append(losses5[i][1])
+    epoch.append(i)
+# Plot the epoch.loss
+rnn.lossvsepoch(epoch, loss, 'Double Sequence')
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 print('break')
