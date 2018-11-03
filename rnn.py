@@ -147,10 +147,13 @@ def train_with_sgd(model, X_train, y_train, index_to_char, learning_rate=0.005, 
             num_examples_seen += 1
     return losses, strings
 
+
 def lossvsepoch(epoch, loss, title):
     plt.plot(epoch, loss)
     plt.xlabel('Epoch')
     plt.ylabel('Loss')
     plt.title(title)
+    t = title+'.png'
+    plt.savefig(t)
     plt.show()
 
