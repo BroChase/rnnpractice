@@ -20,7 +20,7 @@ class RNNVanilla:
         self.hidden_dim = hidden_dim  # size of hidden layer
         self.bptt_truncate = bptt_truncate
 
-        # Randomly initialize the network parameters
+        # Randomly initialize the network parameters of U V W
         self.U = np.random.uniform(-np.sqrt(1. / word_dim), np.sqrt(1. / word_dim), (hidden_dim, word_dim))
         self.V = np.random.uniform(-np.sqrt(1. / hidden_dim), np.sqrt(1. / hidden_dim), (word_dim, hidden_dim))
         self.W = np.random.uniform(-np.sqrt(1. / hidden_dim), np.sqrt(1. / hidden_dim), (hidden_dim, hidden_dim))

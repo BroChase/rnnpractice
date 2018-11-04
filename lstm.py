@@ -1,7 +1,6 @@
 import numpy as np
 import signal
 import rnn
-import matplotlib.pyplot as plt
 from random import uniform
 
 def sigmoid(x):
@@ -240,8 +239,9 @@ class lstm:
             # Print prediction and loss
             print("----\n %s \n----" % txt)
             print("iter %d, loss %f" % (iteration, smooth_loss))
-            f.write("----\n %s \n----\n" % txt)
+
             f.write("iter %d, loss %f\n" % (iteration, smooth_loss))
+            f.write("----\n %s \n----\n\n" % txt)
 
         def update_paramters(params = parameters):
             for p in params.all():
@@ -289,7 +289,7 @@ class lstm:
         #     except KeyboardInterrupt:
         #         update_status(inputs, g_h_prev, g_C_prev)
         #         break
-        while iteration != 10000:
+        while iteration != 10001:
             if pointer + T_steps >= len(data) or iteration == 0:
                 g_h_prev = np.zeros((H_size, 1))
                 g_C_prev = np.zeros((H_size, 1))
