@@ -1,78 +1,85 @@
-Performing gradient check for parameter U with size 1000.
-Gradient check for parameter U passed.
-Performing gradient check for parameter V with size 1000.
-Gradient check for parameter V passed.
-Performing gradient check for parameter W with size 100.
-Gradient check for parameter W passed.
+rnnVanilla with 100 Hidden Units & sequence length of 50:
 Expected Loss for random predictions: 5.545177
-Actual loss: 5.540986
+Actual loss: 5.543576
 rnnVanilla 100 Hidden Units
 Example text
 x:
 t h e   w a l k ,   i n t e r r u p t e d   f o r   a n   i n s t a n t ,   w a s   r e s u m e d
 Resulting outputs from training
-epoch 20 : h e   s a r d t   t n   t r e e s e   r   t a u l t s d t n   t h d d     t h r t n e d t r e d  
+epoch 20 : h e   s a s l     t n       . e d e   d   t o r t t t d t n g t   r n     t a l   n e s t r e d  
 Resulting outputs from training
-epoch 40 : h e   w a s l     t n   e r , e e d . d   t a u e o l   t n   t h d d e   w a s   n o v t m e d  
+epoch 40 : h e   w a s l     a n   e r i e a t e r . f o r t a f s t n   t h r d     h a d   o o a t m e d  
 Resulting outputs from training
-epoch 60 : h e   w a l l     i n   e r , m e t . d   a o r s o y d t n   t h d t e   w a s   n e s t m e d  
+epoch 60 : h e   t a s l     o t   e r t u a e o d . e o r   s l d t n   t h r d .   h a s   o i m t m e d  
 Resulting outputs from training
-epoch 80 : h e   w a l l     i n     r , . p t   d   a o r s o s d t n e t h n t e   w a s   n e s u m e d  
+epoch 80 : h e   w a l l     i n   e r y e c a o r . a o r   s n   i n d t a r d     h a s   s e m t r e d  
 Resulting outputs from training
-epoch 100 : h e   w a l l n   i n     r , a p t . d   w o r e a i d t l e t h d n     w a s   n e s u m e d .
+epoch 100 : h e   w a l l     i n   e r t e c e o r . f o r   a n   a n d t a n d     w a s   n e a t p e d  
+rnnVanilla with 50 Hidden Units & sequence length of 50:
+Expected Loss for random predictions: 5.545177
+Actual loss: 5.545122
 rnnVanilla 50 Hidden Units
 Example text
 x:
 t h e   w a l k ,   i n t e r r u p t e d   f o r   a n   i n s t a n t ,   w a s   r e s u m e d
 Resulting outputs from training
-epoch 20 : h e   s a t l     t     t r t e t e   d   t a u t t n d t     t h r d     t a s   t e s t r e d  
+epoch 20 : h e   s a s l     a n d t   e e r t   d   t a r t f n d t n   t   d e     t a s   n e a t r e d  
 Resulting outputs from training
-epoch 40 : h e   c a t l     a n   i r t e p l   d   t a u e t f d t n   t o r d e   t a s   i e a t r e d  
+epoch 40 : h e   w a s l     a n   i r e e m r i d   t o r t m n d e     t e d d e   a i s e a e s t m e d .
 Resulting outputs from training
-epoch 60 : h e   t a t l     w n   i r o e p e   d   t o u t t s d t n   t h r n     h a s   n e a t r e d  
+epoch 60 : h e   w a s l     i n   i   e e p e e d   f a r t s n d o n   t e n d     i e s   a e t t i a d .
 Resulting outputs from training
-epoch 80 : h e   t a t l     a n   e r t u p t   d   f o u   t n   t n   t i r n e   a a s   n e a t r e d  
+epoch 80 : h e   w a s l     i n   e   e t p e e d   t o r t s n d o n c t e r d     i e s   n e t t i a d .
 Resulting outputs from training
-epoch 100 : h e   w a t l ,   a n   e r t . p t   r   w o r   f l   t n c t i r i .   a a s   n e a t r e d  
+epoch 100 : h e   w i l l n   i n   e r e a p e e d   t o r t m n d e n   t e r d     i o s   n e t t i e d .
+rnnVanilla with 200 Hidden Units & sequence length of 50:
+Expected Loss for random predictions: 5.545177
+Actual loss: 5.544116
 rnnVanilla 200 Hidden Units
 Example text
 x:
 t h e   w a l k ,   i n t e r r u p t e d   f o r   a n   i n s t a n t ,   w a s   r e s u m e d
 Resulting outputs from training
-epoch 20 : h e   s a s l     i n   e r t e p h . d   t a g t h n d t n   t h r n     t a s   s e a t l e d .
+epoch 20 : h e   s a s d     t n g   d . e p e e     t a r t t n d t n   t i r d     t a d s n e r t r e n  
 Resulting outputs from training
-epoch 40 : h e   w a l l     t n d o   e a p h e d   t o n   t n   t l   s h d n .   n a l   i o a t i r d .
+epoch 40 : h e   w a l l     a n a e r . a p l e d   m a r r a i o t n   t i n n ,   a a s   u e a t r e a  
 Resulting outputs from training
-epoch 60 : h e   c a l l     i s   o a r u p l e r   p o o   a n   t n   t h i b     m a s   a e s u r p a .
+epoch 60 : h e   w e l l ,   t n   e r . e p d e d   t o r   a n   o o   o i l d     c t s   i e s u l e d  
 Resulting outputs from training
-epoch 80 : h e   c a l l     i n   o r r u p l e d   f o r   i n   n n   t h n b     m a s   o e s   r p d  
+epoch 80 : h e   w a l l     i n g e r . e p t e s   m o r e i f   o n   a i n o     h t s   i e s u r e d  
 Resulting outputs from training
-epoch 100 : h e   c a s l     i n   e a r u p t e r   f o r   i n   t n   t e d t     h a s   o e s s r e d .
+epoch 100 : h e   w a l l     i n t e r . e p t e d   f o r   i i s i n   s o i d ,   y a s   r e s t l a .  
+rnnVanilla with 100 Hidden Units & sequence length of 25:
+Expected Loss for random predictions: 5.545177
+Actual loss: 5.545234
 rnnVanilla Half Sequence
 Example text
 x:
 w e   s h a l l   k n o w   i n   a n   h o u r
 Resulting outputs from training
-epoch 20 : h r t h a t l   t o o u   t s   t s d t e   s  
+epoch 20 : h   t   e t l   t o o t   t s   t s t t e n t  
 Resulting outputs from training
-epoch 40 : h r m h a l l   t o o w   t n   t s d t e w   .
+epoch 40 : h   m h a l l   s o o w   t n   t s d h e u l  
 Resulting outputs from training
-epoch 60 : h   m h a l l   t n o w   i n   t h   h o u n .
+epoch 60 : h   m u a l l   b o o w   i n   i s p i o u s  
 Resulting outputs from training
-epoch 80 : h   m h a l l   k n o w   i n   a n g h a u r .
+epoch 80 : h   m h a l l   b a o w   i n   i n   i o u s d
 Resulting outputs from training
-epoch 100 : h   m h a l l   k n o w   i n   a n g h e u r .
+epoch 100 : h   m h a l l   n n o t   i n   t n   h o u   d
+rnnVanilla with 100 Hidden Units & sequence length of 100:
+Expected Loss for random predictions: 5.545177
+Actual loss: 5.543685
 rnnVanilla Double Sequence
 Example text
 x:
 " a n d   t h a t ' s   j u s t   t h e   p o i n t , "   a d d e d   p e n c r o f t ,   " i   d o n ' t   k n o w   i f   w e   h a v e   d o n e   r i g h t   t o   b r i n g   h i m   h e r e .
 Resulting outputs from training
-epoch 20 :   n d   a h e t       o o s t   a h e   h o i n t       h d   e r   t a n c r o f       w h n b o i t r   w e o n e a n   t a r l a t e   a r n t   a a s h   e t h   t e e n g   t i s   h e r r   t
+epoch 20 :   n d   a h e t       g o t t   a h e   h a r t g ,     h n     r   a r n   e o f e ,   a n d t o u   e   h a o u   t n   a e r w a n e   t a s e   a o s e e   r h   t e i n g   t a n   h a   e    
 Resulting outputs from training
-epoch 40 :   n d   a h e t   e e o o s t   t h e n c o u n g e     a d   e r   t r r o r e f t ,   w i c b r s t t   w e o n   o t   g a   h a t e   f e n e   t e l h t , t h   b e e n g   t i s   h e   e e "
+epoch 40 :   n d   a h e t   e   g u s t r o h e   c r u n t ,     h t d e d   a r n c r o f t ,   e i n h o u   s   t e o u   h n   b i   h e s e   t o s e   a o s h e e t h   t e i n g   a e s   t a   e d  
 Resulting outputs from training
-epoch 60 :   n d   a o e t   s   g o s t   t h e   s o o d g e     a d   e r   t e r c r o f t ,   a i   t u s d r   s e o w   o s   r a   h a t e   h e u e   a e y h t , t o   b r e n g   a i s   h a   e   "
+epoch 60 : w n d   a h   t       w u s   r o h e   f r u n t       h t d e d   a e n c r o f t o   " n t g o u   t h o n   u   i f   b i   h e   e   o e n e d a o s h t   t h   p e o n g   h i l   h o r e s  
 Resulting outputs from training
-epoch 80 :   n d   a o e t   s a o u s t   t h e   c a u d t e   w a d   e d   h e n c r a f t ,   " h n t r s t r   s a o w   o s   r a t h a s e   f e n e   a a t h t e t o   b e e n g   t i s   h o a e   "
+epoch 80 : w n d   p h   t       g u s t   t h e   c r u n t       b t d e .   a e n c r o f t ,   " n   h o u   t   o u o     i f   e i   h e d e   a e n e d a o s h t   t h   b e i n g   h i l   h e r e    
 Resulting outputs from training
-epoch 100 : w n d   a o e t   s   g u s t   t h e   c o u d t i     a d   e d   t o n c r o f t ,   " i n d o s d t   s a o w   a n   t a   h a t e   t e n e   a a t h t e t h   b e i n g   a i m   h o a e e "
+epoch 100 : w n d   p h   t       g u s     t h e   c o r n t       b t d e d   a e n c r o f t ,   " n   g o u   s   o n o w   i f   e i   h e n e   a e n e   a o s h t   t h   s e i n g   t i s   h e r e .  
