@@ -1,0 +1,30 @@
+Performing gradient check for parameter U with size 25600.
+Gradient check for parameter U passed.
+Performing gradient check for parameter V with size 25600.
+Gradient check for parameter V passed.
+Performing gradient check for parameter W with size 10000.
+Gradient check for parameter W passed.
+Performing gradient check for parameter U with size 12800.
+Gradient check for parameter U passed.
+Performing gradient check for parameter V with size 12800.
+Gradient check for parameter V passed.
+Performing gradient check for parameter W with size 2500.
+Gradient check for parameter W passed.
+Performing gradient check for parameter U with size 51200.
+Gradient check for parameter U passed.
+Performing gradient check for parameter V with size 51200.
+Gradient check for parameter V passed.
+Performing gradient check for parameter W with size 40000.
+Gradient check for parameter W passed.
+Performing gradient check for parameter U with size 25600.
+Gradient check for parameter U passed.
+Performing gradient check for parameter V with size 25600.
+Gradient check for parameter V passed.
+Performing gradient check for parameter W with size 10000.
+Gradient check for parameter W passed.
+Performing gradient check for parameter U with size 25600.
+Gradient check for parameter U passed.
+Performing gradient check for parameter V with size 25600.
+Gradient check for parameter V passed.
+Performing gradient check for parameter W with size 10000.
+Gradient check for parameter W passed.
